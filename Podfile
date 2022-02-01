@@ -6,6 +6,7 @@ target 'SeeIt' do
   use_frameworks!
 
   # Pods for SeeIt
+  pod 'Alamofire'
 
   target 'SeeItTests' do
     inherit! :search_paths
