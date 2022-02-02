@@ -13,9 +13,9 @@ class HomeItemCell: UICollectionViewCell {
         let view = UIImageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .top
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
-        view.image = UIImage(named: "spiderPoster")
+        view.image = UIImage(named: "placeholder")
         
         return view
     }()
@@ -58,6 +58,15 @@ class HomeItemCell: UICollectionViewCell {
     }
     
     // MARK: METHODS
+    func setupInfo(show: Show) {
+        if let showImageUrl = show.show?.image?.original, let url = URL(string: showImageUrl),
+            let data = try? Data(contentsOf: url) {
+            self.imageView.image = UIImage(data: data)
+        }
+        self.titleLabel.text = show.show?.name
+        setupGradient()
+    }
+    
     internal func setupConfig() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleBackground)
@@ -69,27 +78,23 @@ class HomeItemCell: UICollectionViewCell {
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            titleBackground.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.3),
+            titleBackground.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -5),
+            titleBackground.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             titleBackground.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             titleBackground.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            titleLabel.widthAnchor.constraint(equalTo: titleBackground.widthAnchor),
-            titleLabel.heightAnchor.constraint(equalTo: titleBackground.heightAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: titleBackground.trailingAnchor, constant: -7),
             titleLabel.leadingAnchor.constraint(equalTo: titleBackground.leadingAnchor, constant: 7),
+            titleLabel.bottomAnchor.constraint(equalTo: titleBackground.bottomAnchor, constant: -7)
         ])
-        setupGradient()
     }
     
     private func setupGradient() {
         let gradLayer = CAGradientLayer()
-        
-        gradLayer.frame = titleBackground.bounds
+        titleBackground.backgroundColor = .black
+        gradLayer.frame.size = titleBackground.bounds.size
         gradLayer.colors = [UIColor.blue, UIColor.black]
         
-        DispatchQueue.main.async {
-            self.titleBackground.layer.insertSublayer(gradLayer, at: 0)
-        }
-        
+        self.titleBackground.layer.insertSublayer(gradLayer, at: 0)
     }
 }

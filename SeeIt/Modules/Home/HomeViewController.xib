@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HO3-k8-v1G">
-                    <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                    <rect key="frame" x="20.5" y="5" width="373" height="896"/>
                     <color key="backgroundColor" red="0.0001045902952" green="0.01467625807" blue="0.083753998430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="uDb-HO-Ywb">
                         <size key="itemSize" width="128" height="128"/>
@@ -34,7 +34,7 @@
             <color key="backgroundColor" red="0.00010458998406086063" green="0.014676214413306975" blue="0.083753749306913261" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="HO3-k8-v1G" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="YtR-AQ-pEx"/>
-                <constraint firstItem="HO3-k8-v1G" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ZXs-nJ-ZHq"/>
+                <constraint firstItem="HO3-k8-v1G" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="ZXs-nJ-ZHq"/>
                 <constraint firstItem="HO3-k8-v1G" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="lFQ-fC-vJj"/>
                 <constraint firstItem="HO3-k8-v1G" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="wWf-Gj-WDF"/>
             </constraints>

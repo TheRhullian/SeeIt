@@ -8,12 +8,23 @@
 import Foundation
 
 extension URLSession {
+    
+    static var baseUrl = "https://api.tvmaze.com/"
+    
+    enum Endpoints {
+        static let searchShows = "search/shows?q={info}"
+    }
+    
+    // MARK: - URL SESSION CODABLE TASK
     func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        print("[ENDPOINT]: \(url.absoluteString)")
         return self.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 completionHandler(nil, response, error)
                 return
             }
+            let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+            print("[RESULT]: \( json ?? "NO RESULT")")
             completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
         }
     }

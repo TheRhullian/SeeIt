@@ -13,6 +13,16 @@ class HomeViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var homeItemsCollection: UICollectionView!
+    private lazy var searchBar: UISearchBar = {
+        let s = UISearchBar()
+        s.placeholder = "Search Timeline"
+        s.delegate = self
+        s.tintColor = .white
+        s.barTintColor = .clear
+        s.searchTextField.textColor = .white
+        s.sizeToFit()
+        return s
+    }()
     
     // MARK: - Properties
     private var presenter: HomePresenter!
@@ -44,13 +54,15 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Methods
-    func setupConfig() {
+    private func setupConfig() {
         self.presenter = HomePresenter(delegate: self)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = "Filmes e Séries"
         self.homeItemsCollection.delegate = self
         self.homeItemsCollection.dataSource = self
         self.homeItemsCollection.register(HomeItemCell.self, forCellWithReuseIdentifier: HomeItemCell.cellIdentifier)
+        self.homeItemsCollection.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCellId")
+        self.tapToDismiss()
     }
     
     // MARK: - Actions
@@ -59,23 +71,60 @@ class HomeViewController: UIViewController {
 
 // MARK: - HomePresenterDelegate
 extension HomeViewController: HomePresenterDelegate {
+    func homePresenter(didGetResults movies: [Show]) {
+        DispatchQueue.main.async {
+            self.homeItemsCollection.reloadData()
+        }
+    }
 }
 
 // MARK: COLLECTION VIEW DELEGATE
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return presenter.movieResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeItemCell.cellIdentifier, for: indexPath) as? HomeItemCell else {
             return UICollectionViewCell()
         }
+        cell.setupInfo(show: presenter.movieResults[indexPath.row])
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerCellId", for: indexPath)
+        header.addSubview(searchBar)
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBar.leftAnchor.constraint(equalTo: header.leftAnchor),
+            searchBar.rightAnchor.constraint(equalTo: header.rightAnchor),
+            searchBar.topAnchor.constraint(equalTo: header.topAnchor),
+            searchBar.bottomAnchor.constraint(equalTo: header.bottomAnchor)
+        ])
+        
+        return header
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width * 0.9, height: 150)
+        return CGSize(width: 150, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 40)
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        UIViewController.activeTextfield = searchBar.searchTextField
+        searchBar.resignFirstResponder()
+        guard let searchText = searchBar.text else { return }
+        presenter.searchMovie(movie: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("CANCELADO")
     }
 }
 

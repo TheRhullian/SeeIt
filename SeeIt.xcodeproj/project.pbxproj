@@ -24,6 +24,7 @@
 		C7D8342727A6E358004270B6 /* HomeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342627A6E358004270B6 /* HomeItemCell.swift */; };
 		C7D8342A27A99D47004270B6 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342927A99D47004270B6 /* Show.swift */; };
 		C7D8342D27A9A0DE004270B6 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342C27A9A0DE004270B6 /* URLSession+Extension.swift */; };
+		C7D8343027AB393A004270B6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342F27AB393A004270B6 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		C7D8342627A6E358004270B6 /* HomeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemCell.swift; sourceTree = "<group>"; };
 		C7D8342927A99D47004270B6 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		C7D8342C27A9A0DE004270B6 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		C7D8342F27AB393A004270B6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DEEEC708875945997EDD223F /* Pods_SeeIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9268E0B4DB786F7EC499CF3 /* Pods-SeeIt-SeeItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeIt-SeeItUITests.release.xcconfig"; path = "Target Support Files/Pods-SeeIt-SeeItUITests/Pods-SeeIt-SeeItUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				C7D8342C27A9A0DE004270B6 /* URLSession+Extension.swift */,
+				C7D8342F27AB393A004270B6 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D8343027AB393A004270B6 /* UIViewController+Extension.swift in Sources */,
 				C7D8342A27A99D47004270B6 /* Show.swift in Sources */,
 				C7D8342727A6E358004270B6 /* HomeItemCell.swift in Sources */,
 				C7D8342D27A9A0DE004270B6 /* URLSession+Extension.swift in Sources */,

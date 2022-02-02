@@ -140,7 +140,11 @@ class Schedule: Codable {
 
 // MARK: - URLSession Task
 extension URLSession {
-    func showTask(with url: URL, completionHandler: @escaping (Show?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func showTask(movie: String, completionHandler: @escaping ([Show]?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
+        let endpoint = URLSession.Endpoints.searchShows.replacingOccurrences(of: "{info}", with: movie)
+        guard let url = URL(string: URLSession.baseUrl + endpoint) else {
+            return nil
+        }
         return self.codableTask(with: url, completionHandler: completionHandler)
     }
 }
