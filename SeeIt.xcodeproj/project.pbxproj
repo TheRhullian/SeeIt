@@ -31,6 +31,7 @@
 		C7D8343827AB5027004270B6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343727AB5027004270B6 /* UIImage+Extension.swift */; };
 		C7D8343C27AB8C49004270B6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343B27AB8C49004270B6 /* Cache.swift */; };
 		C7D8343E27AB975D004270B6 /* SeriesSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343D27AB975D004270B6 /* SeriesSeason.swift */; };
+		C7D8344027ABAAB4004270B6 /* SeasonEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343F27ABAAB4004270B6 /* SeasonEpisode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		C7D8343727AB5027004270B6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C7D8343B27AB8C49004270B6 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C7D8343D27AB975D004270B6 /* SeriesSeason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesSeason.swift; sourceTree = "<group>"; };
+		C7D8343F27ABAAB4004270B6 /* SeasonEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonEpisode.swift; sourceTree = "<group>"; };
 		DEEEC708875945997EDD223F /* Pods_SeeIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9268E0B4DB786F7EC499CF3 /* Pods-SeeIt-SeeItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeIt-SeeItUITests.release.xcconfig"; path = "Target Support Files/Pods-SeeIt-SeeItUITests/Pods-SeeIt-SeeItUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,6 +267,7 @@
 			children = (
 				C7D8342927A99D47004270B6 /* Show.swift */,
 				C7D8343D27AB975D004270B6 /* SeriesSeason.swift */,
+				C7D8343F27ABAAB4004270B6 /* SeasonEpisode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				C7D8343527AB4B76004270B6 /* ShowDetailsViewController.swift in Sources */,
 				C7D833EC27A46F8C004270B6 /* InitialViewController.swift in Sources */,
 				C7D833E827A46F8C004270B6 /* AppDelegate.swift in Sources */,
+				C7D8344027ABAAB4004270B6 /* SeasonEpisode.swift in Sources */,
 				C7D8343827AB5027004270B6 /* UIImage+Extension.swift in Sources */,
 				C7D8343C27AB8C49004270B6 /* Cache.swift in Sources */,
 				C7D8342327A6D752004270B6 /* HomeViewController.swift in Sources */,

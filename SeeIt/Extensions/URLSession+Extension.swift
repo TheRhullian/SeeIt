@@ -14,11 +14,16 @@ extension URLSession {
     enum Endpoints {
         static let searchShows = "search/shows?q={info}"
         static let serieSeason = "shows/{info}/seasons"
+        static let seasonEpisodes = "seasons/{info}/episodes"
     }
     
     // MARK: - URL SESSION CODABLE TASK
-    func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
         print("[ENDPOINT]: \(url.absoluteString)")
+        if let value: T = Cache.shared.value(for: url.absoluteString) {
+            completionHandler(value, nil, nil)
+            return nil
+        }
         return self.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 completionHandler(nil, response, error)
@@ -26,7 +31,9 @@ extension URLSession {
             }
             let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
             print("[RESULT]: \( json ?? "NO RESULT")")
-            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
+            let value = try? newJSONDecoder().decode(T.self, from: data)
+            Cache.shared.insert(value: value as AnyObject, key: url.absoluteString)
+            completionHandler(value, response, nil)
         }
     }
 }

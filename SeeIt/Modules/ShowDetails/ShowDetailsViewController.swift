@@ -24,9 +24,9 @@ class ShowDetailsViewController: UIViewController {
     var showSelected: Show!
     var sectionToShow: Int = -1 {
         didSet {
+            self.presenter.getEpisodes(season: presenter.seasons[sectionToShow].id ?? -1)
             DispatchQueue.main.async {
                 self.episodesTable.reloadData()
-                self.episodesTable.scrollToRow(at: IndexPath(row: 0, section: self.sectionToShow), at: .middle, animated: true)
             }
         }
     }
@@ -114,18 +114,37 @@ extension ShowDetailsViewController: ShowDetailsPresenterDelegate {
         }
     }
     
+    func showDetailsPresenter(didGetResults episodes: [SeasonEpisode]) {
+        DispatchQueue.main.async {
+            self.episodesTable.reloadData()
+        }
+    }
 }
 
 extension ShowDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == sectionToShow {
-            return 5
+            return presenter.episodes.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell()
+        var config = UIListContentConfiguration.cell()
+        let episode = presenter.episodes[indexPath.row]
+        if let epNumber = episode.number, let title = episode.name, let imageUrl = episode.image?.original {
+            config.textProperties.color = .white
+            config.text = "Ep. \(epNumber) - \(title)"
+            UIImage.getImage(from: imageUrl) { image in
+                config.image = image
+            }
+        }
+        
+        cell.contentConfiguration = config
+        cell.backgroundColor = UIColor(red: 00/255, green: 00/255, blue: 15/255, alpha: 1)
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
