@@ -81,7 +81,7 @@ extension HomeViewController: HomePresenterDelegate {
 }
 
 // MARK: COLLECTION VIEW DELEGATE
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HomeItemCellDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.movieResults.count
     }
@@ -91,6 +91,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         cell.setupInfo(show: presenter.movieResults[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -108,9 +109,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return header
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func didSelectItem(with show: Show) {
         let vc = ShowDetailsViewController()
-        vc.showSelected = presenter.movieResults[indexPath.row]
+        vc.showSelected = show
         
         self.present(vc, animated: true)
     }

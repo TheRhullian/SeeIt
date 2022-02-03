@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeItemCellDelegate: AnyObject {
+    func didSelectItem(with show: Show)
+}
+
 class HomeItemCell: UICollectionViewCell {
     // MARK: UI
     private lazy var imageView: UIImageView = {
@@ -45,6 +49,10 @@ class HomeItemCell: UICollectionViewCell {
         return String(describing: self)
     }
     
+    weak var delegate: HomeItemCellDelegate?
+    
+    var currentShow: Show!
+    
     // MARK: Lifecycle
     override func awakeFromNib() {
         setupConfig()
@@ -60,11 +68,18 @@ class HomeItemCell: UICollectionViewCell {
     
     // MARK: METHODS
     func setupInfo(show: Show) {
+        self.currentShow = show
         if let showImageUrl = show.show?.image?.original {
             self.imageView.image = UIImage.getImage(from: showImageUrl)
         }
         self.titleLabel.text = show.show?.name
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didSelectCell))
+        imageView.addGestureRecognizer(tap)
+        imageView.isUserInteractionEnabled = true
+    }
+    
+    @objc private func didSelectCell() {
+        delegate?.didSelectItem(with: currentShow)
     }
     
     internal func setupConfig() {
