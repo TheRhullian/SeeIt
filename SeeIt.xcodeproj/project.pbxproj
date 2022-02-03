@@ -32,6 +32,9 @@
 		C7D8343C27AB8C49004270B6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343B27AB8C49004270B6 /* Cache.swift */; };
 		C7D8343E27AB975D004270B6 /* SeriesSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343D27AB975D004270B6 /* SeriesSeason.swift */; };
 		C7D8344027ABAAB4004270B6 /* SeasonEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343F27ABAAB4004270B6 /* SeasonEpisode.swift */; };
+		C7D8344427AC1626004270B6 /* EpisodeDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8344127AC1626004270B6 /* EpisodeDetailsPresenter.swift */; };
+		C7D8344527AC1626004270B6 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8344227AC1626004270B6 /* EpisodeDetailsViewController.swift */; };
+		C7D8344627AC1626004270B6 /* EpisodeDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D8344327AC1626004270B6 /* EpisodeDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		C7D8343B27AB8C49004270B6 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C7D8343D27AB975D004270B6 /* SeriesSeason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesSeason.swift; sourceTree = "<group>"; };
 		C7D8343F27ABAAB4004270B6 /* SeasonEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonEpisode.swift; sourceTree = "<group>"; };
+		C7D8344127AC1626004270B6 /* EpisodeDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsPresenter.swift; sourceTree = "<group>"; };
+		C7D8344227AC1626004270B6 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
+		C7D8344327AC1626004270B6 /* EpisodeDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailsViewController.xib; sourceTree = "<group>"; };
 		DEEEC708875945997EDD223F /* Pods_SeeIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9268E0B4DB786F7EC499CF3 /* Pods-SeeIt-SeeItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeIt-SeeItUITests.release.xcconfig"; path = "Target Support Files/Pods-SeeIt-SeeItUITests/Pods-SeeIt-SeeItUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +256,9 @@
 		C7D8341E27A6D659004270B6 /* EpisodeDetails */ = {
 			isa = PBXGroup;
 			children = (
+				C7D8344127AC1626004270B6 /* EpisodeDetailsPresenter.swift */,
+				C7D8344227AC1626004270B6 /* EpisodeDetailsViewController.swift */,
+				C7D8344327AC1626004270B6 /* EpisodeDetailsViewController.xib */,
 			);
 			path = EpisodeDetails;
 			sourceTree = "<group>";
@@ -403,6 +412,7 @@
 			files = (
 				C7D833F427A46F8E004270B6 /* LaunchScreen.storyboard in Resources */,
 				C7D833F127A46F8E004270B6 /* Assets.xcassets in Resources */,
+				C7D8344627AC1626004270B6 /* EpisodeDetailsViewController.xib in Resources */,
 				C7D833EF27A46F8C004270B6 /* Main.storyboard in Resources */,
 				C7D8342427A6D752004270B6 /* HomeViewController.xib in Resources */,
 				C7D8343627AB4B76004270B6 /* ShowDetailsViewController.xib in Resources */,
@@ -539,6 +549,8 @@
 				C7D8342D27A9A0DE004270B6 /* URLSession+Extension.swift in Sources */,
 				C7D8343E27AB975D004270B6 /* SeriesSeason.swift in Sources */,
 				C7D8343427AB4B76004270B6 /* ShowDetailsPresenter.swift in Sources */,
+				C7D8344427AC1626004270B6 /* EpisodeDetailsPresenter.swift in Sources */,
+				C7D8344527AC1626004270B6 /* EpisodeDetailsViewController.swift in Sources */,
 				C7D8342227A6D752004270B6 /* HomePresenter.swift in Sources */,
 				C7D8343527AB4B76004270B6 /* ShowDetailsViewController.swift in Sources */,
 				C7D833EC27A46F8C004270B6 /* InitialViewController.swift in Sources */,
@@ -636,7 +648,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -653,7 +665,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -708,7 +720,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -735,7 +747,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -765,7 +777,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

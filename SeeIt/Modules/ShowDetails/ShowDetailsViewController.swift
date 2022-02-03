@@ -9,7 +9,9 @@ import UIKit
 
 class ShowDetailsViewController: UIViewController {
 
-    enum ShowDetailsRouter {}
+    enum ShowDetailsRouter {
+        case episodeDetails(episode: SeasonEpisode)
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var posterImage: UIImageView!
@@ -131,18 +133,15 @@ extension ShowDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        var config = UIListContentConfiguration.cell()
+        var config = cell.defaultContentConfiguration()
         let episode = presenter.episodes[indexPath.row]
-        if let epNumber = episode.number, let title = episode.name, let imageUrl = episode.image?.original {
+        if let epNumber = episode.number, let title = episode.name {
             config.textProperties.color = .white
             config.text = "Ep. \(epNumber) - \(title)"
-            UIImage.getImage(from: imageUrl) { image in
-                config.image = image
-            }
         }
-        
+
         cell.contentConfiguration = config
-        cell.backgroundColor = UIColor(red: 00/255, green: 00/255, blue: 15/255, alpha: 1)
+        cell.backgroundColor = UIColor(red: 00/255, green: 00/255, blue: 15/255, alpha: 0.6)
         
         return cell
     }
@@ -165,6 +164,15 @@ extension ShowDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigate(to: .episodeDetails(episode: presenter.episodes[indexPath.row]))
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.seasons.count
     }
@@ -173,5 +181,15 @@ extension ShowDetailsViewController: UITableViewDelegate, UITableViewDataSource 
 // MARK: - ROUTER FUNCTIONS
 extension ShowDetailsViewController {
     func navigate(to selected: ShowDetailsRouter) {
+        switch selected {
+        case .episodeDetails(let episode):
+            let vc = EpisodeDetailsViewController()
+            vc.episodeSelected = episode
+            vc.modalPresentationStyle = .pageSheet
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [.medium()]
+            }
+            self.present(vc, animated: true)
+        }
     }
 }
