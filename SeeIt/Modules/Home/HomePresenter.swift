@@ -70,16 +70,15 @@ class HomePresenter {
         }
         
         let task = URLSession(configuration: .default).showTask(movie: movie) { result, response, error in
-            
+            DispatchQueue.main.async {
+                self.delegate?.fullScreenLoading(hide: true)
+            }
             if let err = error {
                 print(err)
                 return
             }
             
             guard let res = result else { return }
-            DispatchQueue.main.async {
-                self.delegate?.fullScreenLoading(hide: true)
-            }
             self.movieResults = res
         }
         task?.resume()
