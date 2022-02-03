@@ -54,28 +54,32 @@ class HomeItemCell: UICollectionViewCell {
     var currentShow: Show!
     
     // MARK: Lifecycle
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupConfig()
     }
     
-    override func layoutSubviews() {
-        setupConfig()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func prepareForReuse() {
-        setupConfig()
+        super.prepareForReuse()
+        self.imageView.image = UIImage(named: "placeholder")
+        self.titleLabel.text = "-"
     }
     
     // MARK: METHODS
     func setupInfo(show: Show) {
         self.currentShow = show
         if let showImageUrl = show.show?.image?.original {
-            self.imageView.image = UIImage.getImage(from: showImageUrl)
+            UIImage.getImage(from: showImageUrl) { image in
+                DispatchQueue.main.async {
+                    self.imageView.image = image ?? UIImage(named: "placeholder")
+                }
+            }
         }
         self.titleLabel.text = show.show?.name
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didSelectCell))
-        imageView.addGestureRecognizer(tap)
-        imageView.isUserInteractionEnabled = true
     }
     
     @objc private func didSelectCell() {
@@ -85,6 +89,9 @@ class HomeItemCell: UICollectionViewCell {
     internal func setupConfig() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleBackground)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didSelectCell))
+        imageView.addGestureRecognizer(tap)
+        imageView.isUserInteractionEnabled = true
         titleBackground.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([

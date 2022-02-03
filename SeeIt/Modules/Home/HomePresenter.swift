@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-protocol HomePresenterDelegate: AnyObject {
+protocol HomePresenterDelegate: UIViewController {
     func homePresenter(didGetResults movies: [Show])
 }
 
@@ -27,23 +28,33 @@ class HomePresenter {
     }
     
     func didLoad() {
-        searchMovie(movie: "Marvel")
     }
     
     func willAppear() {
     }
     
     func didAppear() {
+        if movieResults.isEmpty {
+            searchMovie(movie: "Marvel")
+        }
     }
     
     func searchMovie(movie: String) {
+        DispatchQueue.main.async {
+            self.delegate?.fullScreenLoading(hide: false)
+        }
+        
         let task = URLSession(configuration: .default).showTask(movie: movie) { result, response, error in
+            
             if let err = error {
                 print(err)
                 return
             }
             
             guard let res = result else { return }
+            DispatchQueue.main.async {
+                self.delegate?.fullScreenLoading(hide: true)
+            }
             self.movieResults = res
         }
         task?.resume()

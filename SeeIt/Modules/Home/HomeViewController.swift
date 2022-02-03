@@ -9,7 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    enum HomeRouter {}
+    enum HomeRouter {
+        case showDetails(show: Show)
+    }
     
     // MARK: - Outlets
     @IBOutlet weak var homeItemsCollection: UICollectionView!
@@ -110,10 +112,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func didSelectItem(with show: Show) {
-        let vc = ShowDetailsViewController()
-        vc.showSelected = show
-        
-        self.present(vc, animated: true)
+        navigate(to: .showDetails(show: show))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -132,14 +131,16 @@ extension HomeViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text else { return }
         presenter.searchMovie(movie: searchText)
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("CANCELADO")
-    }
 }
 
 // MARK: - ROUTER FUNCTIONS
 extension HomeViewController {
     func navigate(to selected: HomeRouter) {
+        switch selected {
+        case .showDetails(let show):
+            let vc = ShowDetailsViewController()
+            vc.showSelected = show
+            self.present(vc, animated: true)
+        }
     }
 }

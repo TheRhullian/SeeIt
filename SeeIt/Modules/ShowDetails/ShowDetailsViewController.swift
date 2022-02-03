@@ -53,10 +53,14 @@ class ShowDetailsViewController: UIViewController {
         self.presenter = ShowDetailsPresenter(delegate: self)
         
         if let showImageUrl = showSelected.show?.image?.original {
-            self.posterImage.image = UIImage.getImage(from: showImageUrl)
+            UIImage.getImage(from: showImageUrl) { image in
+                DispatchQueue.main.async {
+                    self.posterImage.image = image ?? UIImage(named: "placeholder")
+                }
+            }
         }
         titleLabel.text = showSelected.show?.name
-        genresLabel.text = showSelected.show?.genres?.joined(separator: "/")
+        genresLabel.text = showSelected.show?.genres?.joined(separator: " / ")
         summaryTextView.text = showSelected.show?.summary
     }
     
