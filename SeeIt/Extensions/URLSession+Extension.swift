@@ -13,6 +13,7 @@ extension URLSession {
     
     enum Endpoints {
         static let searchShows = "search/shows?q={info}"
+        static let serieSeason = "shows/{info}/seasons"
     }
     
     // MARK: - URL SESSION CODABLE TASK

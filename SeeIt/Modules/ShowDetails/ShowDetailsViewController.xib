@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowDetailsViewController" customModule="SeeIt" customModuleProvider="target">
             <connections>
+                <outlet property="airesLabel" destination="wvZ-3O-WKq" id="LWS-Cj-GZ7"/>
                 <outlet property="episodesTable" destination="rec-VB-GWw" id="JuV-fu-EmU"/>
                 <outlet property="genresLabel" destination="QkB-dB-ZJ0" id="Q5q-xN-YFR"/>
                 <outlet property="posterImage" destination="e2I-01-dga" id="JKZ-Rg-he3"/>
@@ -43,23 +44,29 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="-" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNP-42-dSQ">
-                                    <rect key="frame" x="20.5" y="285" width="373" height="150"/>
+                                    <rect key="frame" x="20.5" y="285" width="373" height="100"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="150" id="OR7-Yq-HPI"/>
+                                        <constraint firstAttribute="height" constant="100" id="OR7-Yq-HPI"/>
                                     </constraints>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rec-VB-GWw">
-                                    <rect key="frame" x="20.5" y="455" width="373" height="411"/>
+                                    <rect key="frame" x="20.5" y="405" width="373" height="461"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkB-dB-ZJ0">
                                     <rect key="frame" x="186" y="85" width="213" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New episodes:  - Every {day} at {time}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-3O-WKq">
+                                    <rect key="frame" x="186" y="107" width="213" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -75,10 +82,13 @@
                                 <constraint firstItem="e2I-01-dga" firstAttribute="leading" secondItem="u0c-yW-rmB" secondAttribute="leading" constant="8" id="b5u-aQ-FwR"/>
                                 <constraint firstAttribute="bottom" secondItem="rec-VB-GWw" secondAttribute="bottom" constant="30" id="bsd-P3-OB3"/>
                                 <constraint firstItem="Hmr-Le-D5d" firstAttribute="top" secondItem="e2I-01-dga" secondAttribute="top" id="chK-vd-rz4"/>
+                                <constraint firstItem="wvZ-3O-WKq" firstAttribute="width" secondItem="QkB-dB-ZJ0" secondAttribute="width" id="dzN-vl-2Zy"/>
                                 <constraint firstItem="rec-VB-GWw" firstAttribute="top" secondItem="iNP-42-dSQ" secondAttribute="bottom" constant="20" id="ehG-Q8-zfV"/>
                                 <constraint firstItem="Hmr-Le-D5d" firstAttribute="leading" secondItem="e2I-01-dga" secondAttribute="trailing" constant="26" id="fKO-q3-Key"/>
+                                <constraint firstItem="wvZ-3O-WKq" firstAttribute="top" secondItem="QkB-dB-ZJ0" secondAttribute="bottom" constant="7.5" id="kZ6-r1-Mmz"/>
                                 <constraint firstItem="QkB-dB-ZJ0" firstAttribute="centerX" secondItem="Hmr-Le-D5d" secondAttribute="centerX" id="kr5-2Z-EuL"/>
                                 <constraint firstItem="iNP-42-dSQ" firstAttribute="centerX" secondItem="u0c-yW-rmB" secondAttribute="centerX" id="mrI-rY-UiC"/>
+                                <constraint firstItem="wvZ-3O-WKq" firstAttribute="centerX" secondItem="QkB-dB-ZJ0" secondAttribute="centerX" id="pXQ-Pg-26p"/>
                                 <constraint firstItem="QkB-dB-ZJ0" firstAttribute="width" secondItem="Hmr-Le-D5d" secondAttribute="width" id="s8E-6k-SwH"/>
                             </constraints>
                         </view>
