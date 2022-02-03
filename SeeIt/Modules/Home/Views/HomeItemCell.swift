@@ -26,7 +26,7 @@ class HomeItemCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.text = "Titulo"
-        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.font = .systemFont(ofSize: 12, weight: .bold)
         label.numberOfLines = 2
         
         return label
@@ -36,6 +36,7 @@ class HomeItemCell: UICollectionViewCell {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black.withAlphaComponent(0.5)
         
         return view
     }()
@@ -59,12 +60,11 @@ class HomeItemCell: UICollectionViewCell {
     
     // MARK: METHODS
     func setupInfo(show: Show) {
-        if let showImageUrl = show.show?.image?.original, let url = URL(string: showImageUrl),
-            let data = try? Data(contentsOf: url) {
-            self.imageView.image = UIImage(data: data)
+        if let showImageUrl = show.show?.image?.original {
+            self.imageView.image = UIImage.getImage(from: showImageUrl)
         }
         self.titleLabel.text = show.show?.name
-        setupGradient()
+
     }
     
     internal func setupConfig() {
@@ -87,14 +87,5 @@ class HomeItemCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: titleBackground.leadingAnchor, constant: 7),
             titleLabel.bottomAnchor.constraint(equalTo: titleBackground.bottomAnchor, constant: -7)
         ])
-    }
-    
-    private func setupGradient() {
-        let gradLayer = CAGradientLayer()
-        titleBackground.backgroundColor = .black
-        gradLayer.frame.size = titleBackground.bounds.size
-        gradLayer.colors = [UIColor.blue, UIColor.black]
-        
-        self.titleBackground.layer.insertSublayer(gradLayer, at: 0)
     }
 }

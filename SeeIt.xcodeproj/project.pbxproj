@@ -25,6 +25,10 @@
 		C7D8342A27A99D47004270B6 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342927A99D47004270B6 /* Show.swift */; };
 		C7D8342D27A9A0DE004270B6 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342C27A9A0DE004270B6 /* URLSession+Extension.swift */; };
 		C7D8343027AB393A004270B6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8342F27AB393A004270B6 /* UIViewController+Extension.swift */; };
+		C7D8343427AB4B76004270B6 /* ShowDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343127AB4B76004270B6 /* ShowDetailsPresenter.swift */; };
+		C7D8343527AB4B76004270B6 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343227AB4B76004270B6 /* ShowDetailsViewController.swift */; };
+		C7D8343627AB4B76004270B6 /* ShowDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D8343327AB4B76004270B6 /* ShowDetailsViewController.xib */; };
+		C7D8343827AB5027004270B6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8343727AB5027004270B6 /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 		C7D8342927A99D47004270B6 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		C7D8342C27A9A0DE004270B6 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		C7D8342F27AB393A004270B6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C7D8343127AB4B76004270B6 /* ShowDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsPresenter.swift; sourceTree = "<group>"; };
+		C7D8343227AB4B76004270B6 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
+		C7D8343327AB4B76004270B6 /* ShowDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailsViewController.xib; sourceTree = "<group>"; };
+		C7D8343727AB5027004270B6 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		DEEEC708875945997EDD223F /* Pods_SeeIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9268E0B4DB786F7EC499CF3 /* Pods-SeeIt-SeeItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeIt-SeeItUITests.release.xcconfig"; path = "Target Support Files/Pods-SeeIt-SeeItUITests/Pods-SeeIt-SeeItUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +233,9 @@
 		C7D8341D27A6D594004270B6 /* ShowDetails */ = {
 			isa = PBXGroup;
 			children = (
+				C7D8343127AB4B76004270B6 /* ShowDetailsPresenter.swift */,
+				C7D8343227AB4B76004270B6 /* ShowDetailsViewController.swift */,
+				C7D8343327AB4B76004270B6 /* ShowDetailsViewController.xib */,
 			);
 			path = ShowDetails;
 			sourceTree = "<group>";
@@ -257,6 +268,7 @@
 			children = (
 				C7D8342C27A9A0DE004270B6 /* URLSession+Extension.swift */,
 				C7D8342F27AB393A004270B6 /* UIViewController+Extension.swift */,
+				C7D8343727AB5027004270B6 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -384,6 +396,7 @@
 				C7D833F127A46F8E004270B6 /* Assets.xcassets in Resources */,
 				C7D833EF27A46F8C004270B6 /* Main.storyboard in Resources */,
 				C7D8342427A6D752004270B6 /* HomeViewController.xib in Resources */,
+				C7D8343627AB4B76004270B6 /* ShowDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,9 +528,12 @@
 				C7D8342A27A99D47004270B6 /* Show.swift in Sources */,
 				C7D8342727A6E358004270B6 /* HomeItemCell.swift in Sources */,
 				C7D8342D27A9A0DE004270B6 /* URLSession+Extension.swift in Sources */,
+				C7D8343427AB4B76004270B6 /* ShowDetailsPresenter.swift in Sources */,
 				C7D8342227A6D752004270B6 /* HomePresenter.swift in Sources */,
+				C7D8343527AB4B76004270B6 /* ShowDetailsViewController.swift in Sources */,
 				C7D833EC27A46F8C004270B6 /* InitialViewController.swift in Sources */,
 				C7D833E827A46F8C004270B6 /* AppDelegate.swift in Sources */,
+				C7D8343827AB5027004270B6 /* UIImage+Extension.swift in Sources */,
 				C7D8342327A6D752004270B6 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

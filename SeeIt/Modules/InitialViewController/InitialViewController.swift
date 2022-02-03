@@ -21,8 +21,8 @@ class InitialViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
         
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 00/255, green: 04/255, blue: 15/255, alpha: 1)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 00/255, green: 04/255, blue: 15/255, alpha: 1)
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 00/255, green: 00/255, blue: 15/255, alpha: 0.5)
         self.navigationController?.setViewControllers([vc], animated: true)
     }
     

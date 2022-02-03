@@ -15,10 +15,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeItemsCollection: UICollectionView!
     private lazy var searchBar: UISearchBar = {
         let s = UISearchBar()
-        s.placeholder = "Search Timeline"
+        s.placeholder = "Search a show"
         s.delegate = self
         s.tintColor = .white
         s.barTintColor = .clear
+        s.searchBarStyle = .minimal
+        s.barStyle = .default
         s.searchTextField.textColor = .white
         s.sizeToFit()
         return s
@@ -100,10 +102,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             searchBar.leftAnchor.constraint(equalTo: header.leftAnchor),
             searchBar.rightAnchor.constraint(equalTo: header.rightAnchor),
             searchBar.topAnchor.constraint(equalTo: header.topAnchor),
-            searchBar.bottomAnchor.constraint(equalTo: header.bottomAnchor)
+            searchBar.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -10)
         ])
         
         return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ShowDetailsViewController()
+        vc.showSelected = presenter.movieResults[indexPath.row]
+        
+        self.present(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -111,7 +120,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 40)
+        return CGSize(width: view.frame.width, height: 50)
     }
 }
 
