@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="airesLabel" destination="wvZ-3O-WKq" id="LWS-Cj-GZ7"/>
                 <outlet property="episodesTable" destination="rec-VB-GWw" id="JuV-fu-EmU"/>
+                <outlet property="favoriteButton" destination="rIV-Jh-Trv" id="w1F-87-Um9"/>
                 <outlet property="genresLabel" destination="QkB-dB-ZJ0" id="Q5q-xN-YFR"/>
                 <outlet property="posterImage" destination="e2I-01-dga" id="JKZ-Rg-he3"/>
                 <outlet property="summaryTextView" destination="iNP-42-dSQ" id="WiZ-Oq-dy0"/>
@@ -69,6 +70,14 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIV-Jh-Trv">
+                                    <rect key="frame" x="186" y="147" width="213" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Add favorite"/>
+                                    <connections>
+                                        <action selector="addFavoriteTap:" destination="-1" eventType="touchUpInside" id="nna-md-Kla"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -78,6 +87,8 @@
                                 <constraint firstItem="iNP-42-dSQ" firstAttribute="width" secondItem="u0c-yW-rmB" secondAttribute="width" multiplier="0.9" id="KlS-EP-7BS"/>
                                 <constraint firstItem="rec-VB-GWw" firstAttribute="centerX" secondItem="iNP-42-dSQ" secondAttribute="centerX" id="Ojo-Kv-C9t"/>
                                 <constraint firstItem="QkB-dB-ZJ0" firstAttribute="top" secondItem="Hmr-Le-D5d" secondAttribute="bottom" constant="7.5" id="Pt0-mo-3qh"/>
+                                <constraint firstItem="rIV-Jh-Trv" firstAttribute="centerX" secondItem="wvZ-3O-WKq" secondAttribute="centerX" id="QhO-Fx-dVR"/>
+                                <constraint firstItem="rIV-Jh-Trv" firstAttribute="width" secondItem="wvZ-3O-WKq" secondAttribute="width" id="UEL-QJ-GYf"/>
                                 <constraint firstItem="iNP-42-dSQ" firstAttribute="top" secondItem="e2I-01-dga" secondAttribute="bottom" constant="17" id="YJ5-dY-iDd"/>
                                 <constraint firstItem="e2I-01-dga" firstAttribute="leading" secondItem="u0c-yW-rmB" secondAttribute="leading" constant="8" id="b5u-aQ-FwR"/>
                                 <constraint firstAttribute="bottom" secondItem="rec-VB-GWw" secondAttribute="bottom" constant="30" id="bsd-P3-OB3"/>
@@ -88,6 +99,7 @@
                                 <constraint firstItem="wvZ-3O-WKq" firstAttribute="top" secondItem="QkB-dB-ZJ0" secondAttribute="bottom" constant="7.5" id="kZ6-r1-Mmz"/>
                                 <constraint firstItem="QkB-dB-ZJ0" firstAttribute="centerX" secondItem="Hmr-Le-D5d" secondAttribute="centerX" id="kr5-2Z-EuL"/>
                                 <constraint firstItem="iNP-42-dSQ" firstAttribute="centerX" secondItem="u0c-yW-rmB" secondAttribute="centerX" id="mrI-rY-UiC"/>
+                                <constraint firstItem="rIV-Jh-Trv" firstAttribute="top" secondItem="wvZ-3O-WKq" secondAttribute="bottom" constant="11" id="pMR-rC-BRe"/>
                                 <constraint firstItem="wvZ-3O-WKq" firstAttribute="centerX" secondItem="QkB-dB-ZJ0" secondAttribute="centerX" id="pXQ-Pg-26p"/>
                                 <constraint firstItem="QkB-dB-ZJ0" firstAttribute="width" secondItem="Hmr-Le-D5d" secondAttribute="width" id="s8E-6k-SwH"/>
                             </constraints>

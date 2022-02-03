@@ -35,6 +35,11 @@
 		C7D8344427AC1626004270B6 /* EpisodeDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8344127AC1626004270B6 /* EpisodeDetailsPresenter.swift */; };
 		C7D8344527AC1626004270B6 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8344227AC1626004270B6 /* EpisodeDetailsViewController.swift */; };
 		C7D8344627AC1626004270B6 /* EpisodeDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D8344327AC1626004270B6 /* EpisodeDetailsViewController.xib */; };
+		C7D8344B27AC26BD004270B6 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8344827AC26BD004270B6 /* FavoritesPresenter.swift */; };
+		C7D8344C27AC26BD004270B6 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8344927AC26BD004270B6 /* FavoritesViewController.swift */; };
+		C7D8344D27AC26BD004270B6 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D8344A27AC26BD004270B6 /* FavoritesViewController.xib */; };
+		C7D8345127AC2D5E004270B6 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8345027AC2D5E004270B6 /* UserDefaults.swift */; };
+		C7D8345327AC3962004270B6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8345227AC3962004270B6 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,11 @@
 		C7D8344127AC1626004270B6 /* EpisodeDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsPresenter.swift; sourceTree = "<group>"; };
 		C7D8344227AC1626004270B6 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
 		C7D8344327AC1626004270B6 /* EpisodeDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailsViewController.xib; sourceTree = "<group>"; };
+		C7D8344827AC26BD004270B6 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		C7D8344927AC26BD004270B6 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		C7D8344A27AC26BD004270B6 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		C7D8345027AC2D5E004270B6 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		C7D8345227AC3962004270B6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		DEEEC708875945997EDD223F /* Pods_SeeIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9268E0B4DB786F7EC499CF3 /* Pods-SeeIt-SeeItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeIt-SeeItUITests.release.xcconfig"; path = "Target Support Files/Pods-SeeIt-SeeItUITests/Pods-SeeIt-SeeItUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +202,7 @@
 			children = (
 				C7D8341E27A6D659004270B6 /* EpisodeDetails */,
 				C7D8341D27A6D594004270B6 /* ShowDetails */,
+				C7D8344727AC2683004270B6 /* Favorites */,
 				C7D8341C27A6D57E004270B6 /* Home */,
 				C7D8341B27A4706A004270B6 /* InitialViewController */,
 			);
@@ -211,6 +222,8 @@
 			children = (
 				C7D833F027A46F8E004270B6 /* Assets.xcassets */,
 				C7D8343B27AB8C49004270B6 /* Cache.swift */,
+				C7D8345027AC2D5E004270B6 /* UserDefaults.swift */,
+				C7D8345227AC3962004270B6 /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -289,6 +302,16 @@
 				C7D8343727AB5027004270B6 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C7D8344727AC2683004270B6 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				C7D8344827AC26BD004270B6 /* FavoritesPresenter.swift */,
+				C7D8344927AC26BD004270B6 /* FavoritesViewController.swift */,
+				C7D8344A27AC26BD004270B6 /* FavoritesViewController.xib */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		D5EDF3E96F6B11C759DBFB9C /* Frameworks */ = {
@@ -414,6 +437,7 @@
 				C7D833F127A46F8E004270B6 /* Assets.xcassets in Resources */,
 				C7D8344627AC1626004270B6 /* EpisodeDetailsViewController.xib in Resources */,
 				C7D833EF27A46F8C004270B6 /* Main.storyboard in Resources */,
+				C7D8344D27AC26BD004270B6 /* FavoritesViewController.xib in Resources */,
 				C7D8342427A6D752004270B6 /* HomeViewController.xib in Resources */,
 				C7D8343627AB4B76004270B6 /* ShowDetailsViewController.xib in Resources */,
 			);
@@ -544,6 +568,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7D8343027AB393A004270B6 /* UIViewController+Extension.swift in Sources */,
+				C7D8345327AC3962004270B6 /* Colors.swift in Sources */,
+				C7D8344B27AC26BD004270B6 /* FavoritesPresenter.swift in Sources */,
 				C7D8342A27A99D47004270B6 /* Show.swift in Sources */,
 				C7D8342727A6E358004270B6 /* HomeItemCell.swift in Sources */,
 				C7D8342D27A9A0DE004270B6 /* URLSession+Extension.swift in Sources */,
@@ -552,8 +578,10 @@
 				C7D8344427AC1626004270B6 /* EpisodeDetailsPresenter.swift in Sources */,
 				C7D8344527AC1626004270B6 /* EpisodeDetailsViewController.swift in Sources */,
 				C7D8342227A6D752004270B6 /* HomePresenter.swift in Sources */,
+				C7D8344C27AC26BD004270B6 /* FavoritesViewController.swift in Sources */,
 				C7D8343527AB4B76004270B6 /* ShowDetailsViewController.swift in Sources */,
 				C7D833EC27A46F8C004270B6 /* InitialViewController.swift in Sources */,
+				C7D8345127AC2D5E004270B6 /* UserDefaults.swift in Sources */,
 				C7D833E827A46F8C004270B6 /* AppDelegate.swift in Sources */,
 				C7D8344027ABAAB4004270B6 /* SeasonEpisode.swift in Sources */,
 				C7D8343827AB5027004270B6 /* UIImage+Extension.swift in Sources */,

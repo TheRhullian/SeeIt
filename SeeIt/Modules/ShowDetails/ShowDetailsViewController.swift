@@ -20,6 +20,7 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet weak var airesLabel: UILabel!
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var episodesTable: UITableView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     // MARK: - Properties
     private var presenter: ShowDetailsPresenter!
@@ -52,6 +53,7 @@ class ShowDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.willAppear()
+        setupLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +67,16 @@ class ShowDetailsViewController: UIViewController {
         
         self.episodesTable.delegate = self
         self.episodesTable.dataSource = self
+        
+        // Search for seasons
+        if let id = showSelected.show?.id {
+            presenter.getSeasons(showId: id)
+        }
+    }
+    
+    func setupLayout() {
+        // Set Button State
+        setButtonState()
         
         if let showImageUrl = showSelected.show?.image?.original {
             UIImage.getImage(from: showImageUrl) { image in
@@ -90,12 +102,6 @@ class ShowDetailsViewController: UIViewController {
         } else {
             airesLabel.isHidden = true
         }
-        
-        // Search for seasons
-        if let id = showSelected.show?.id {
-            presenter.getSeasons(showId: id)
-        }
-        
     }
     
     @objc private func showSection(sender: UITapGestureRecognizer) {
@@ -104,8 +110,28 @@ class ShowDetailsViewController: UIViewController {
         self.sectionToShow = newSection
     }
     
+    private func isFavorited() -> Bool {
+        return UserDefaultsManager.shared.favorites.contains(where: { $0.show?.id == showSelected.show?.id })
+    }
+    
+    private func setButtonState() {
+        if isFavorited() {
+            favoriteButton.setTitle("Remove favorite", for: .normal)
+        } else {
+            favoriteButton.setTitle("Add favorite", for: .normal)
+        }
+    }
+    
     // MARK: - Actions
-
+    @IBAction func addFavoriteTap(_ sender: UIButton) {
+        if isFavorited() {
+            UserDefaultsManager.shared.favorites.removeAll(where: { $0.show?.id == showSelected.show?.id })
+        } else {
+            UserDefaultsManager.shared.favorites.append(showSelected)
+        }
+        
+        setButtonState()
+    }
 }
 
 // MARK: - ShowDetailsPresenterDelegate

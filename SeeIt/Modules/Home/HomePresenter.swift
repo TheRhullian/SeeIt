@@ -9,16 +9,41 @@ import Foundation
 import UIKit
 
 protocol HomePresenterDelegate: UIViewController {
-    func homePresenter(didGetResults movies: [Show])
+    func homePresenter(updateData movies: [Show])
 }
 
 class HomePresenter {
     
+    enum SortType {
+        case alphabetically
+        case average
+        case none
+    }
+    
     weak var delegate: HomePresenterDelegate?
     
-    var movieResults: [Show] = [] {
+    private var movieResults: [Show] = [] {
         didSet {
-            self.delegate?.homePresenter(didGetResults: self.movieResults)
+            self.delegate?.homePresenter(updateData: self.moviesResultsSorted)
+        }
+    }
+    
+    var moviesResultsSorted: [Show] {
+        switch sortType {
+        case .alphabetically:
+            let sorted = movieResults.sorted(by: {($0.show?.name ?? "") < ($1.show?.name ?? "")})
+            return sorted
+        case .average:
+            let sorted = movieResults.sorted(by: {($0.score ?? 0.0) > ($1.score ?? 0.0)})
+            return sorted
+        case .none:
+            return movieResults
+        }
+    }
+    
+    var sortType: SortType = .none {
+        didSet {
+            self.delegate?.homePresenter(updateData: self.moviesResultsSorted)
         }
     }
     

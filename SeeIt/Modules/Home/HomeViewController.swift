@@ -50,6 +50,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.willAppear()
+        self.setupFilterButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,13 +61,36 @@ class HomeViewController: UIViewController {
     // MARK: - Methods
     private func setupConfig() {
         self.presenter = HomePresenter(delegate: self)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.title = "Filmes e Séries"
         self.homeItemsCollection.delegate = self
         self.homeItemsCollection.dataSource = self
         self.homeItemsCollection.register(HomeItemCell.self, forCellWithReuseIdentifier: HomeItemCell.cellIdentifier)
         self.homeItemsCollection.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCellId")
         self.tapToDismiss()
+    }
+    
+    private func setupFilterButton() {
+        let button = UIBarButtonItem(image: .init(systemName: "ellipsis.circle"), style: .plain, target: self, action: #selector(openSortPopup))
+        self.navigationItem.setRightBarButton(button, animated: true)
+    }
+    
+    @objc private func openSortPopup() {
+        let alert = UIAlertController(title: "Filter", message: "Filter the list by:", preferredStyle: .actionSheet)
+        let alphabeticallyAction = UIAlertAction(title: "Alphabetically", style: .default, handler: { action in
+            self.presenter.sortType = .alphabetically
+        })
+        let avgAction = UIAlertAction(title: "Average", style: .default, handler: { action in
+            self.presenter.sortType = .average
+        })
+        let noneAction = UIAlertAction(title: "None", style: .default, handler: { action in
+            self.presenter.sortType = .none
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(alphabeticallyAction)
+        alert.addAction(avgAction)
+        alert.addAction(noneAction)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
     }
     
     // MARK: - Actions
@@ -75,7 +99,7 @@ class HomeViewController: UIViewController {
 
 // MARK: - HomePresenterDelegate
 extension HomeViewController: HomePresenterDelegate {
-    func homePresenter(didGetResults movies: [Show]) {
+    func homePresenter(updateData movies: [Show]) {
         DispatchQueue.main.async {
             self.homeItemsCollection.reloadData()
         }
@@ -85,14 +109,14 @@ extension HomeViewController: HomePresenterDelegate {
 // MARK: COLLECTION VIEW DELEGATE
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HomeItemCellDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.movieResults.count
+        return presenter.moviesResultsSorted.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeItemCell.cellIdentifier, for: indexPath) as? HomeItemCell else {
             return UICollectionViewCell()
         }
-        cell.setupInfo(show: presenter.movieResults[indexPath.row])
+        cell.setupInfo(show: presenter.moviesResultsSorted[indexPath.row])
         cell.delegate = self
         return cell
     }
